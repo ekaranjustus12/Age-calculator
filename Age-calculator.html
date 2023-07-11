@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<style>
+	.container{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+        position: absolute;
+        top: 30%;
+        left: 30%;
+        height: 400px;
+        width: 400px;
+        background: lightblue;
+	}
+	form{
+		margin: 20px 40px;
+	}
+	form input{
+		font-size: 20px;
+		font-weight: 300;
+		margin: 5px 8px;
+		padding: 5px;
+		background: lightcyan;
+		border:1px solid;
+		border-radius: 5px;
+	}
+	p{
+		margin: 5px 10px;
+		font-size: 15px;
+	}
+</style>
+<body>
+	<div class='container'>
+		<form>
+			<input type="date" name="bdate"id='bdate'>
+			<input type="button" value="calculate"id='btn'>
+			<p id='age'>Age is 20 years</p>
+		</form>
+		<script type="text/javascript">
+			const birthDay = document.getElementById('bdate');
+			const show = document.getElementById('age');
+			const button = document.getElementById('btn');
+			function displayAge() {
+				// body...
+				let birthDate = new Date(birthDay.value);
+				let birthYear = birthDate.getFullYear();
+				let today = new Date();
+				let currentYear = today.getFullYear();
+				let age;
+				age = currentYear - birthYear;
+				if(birthYear >= currentYear){
+					button.disabled=true;
+					button.style.background='red';
+				}else{
+				       button.disabled=false;
+				       show.innerHTML = 'you are '+ age +' years old';
+			         }
+
+			}
+			button.addEventListener('click',displayAge);
+		</script>
+
+</body>
+</html>
